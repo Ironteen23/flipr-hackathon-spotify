@@ -1,9 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import Podcasters from "./Podcasters/podcasters";
-import Audioplayer from "./AudioPlayer/audioplayer";
-// import styles from "../../../public/styles/rightSidePanel.css";
-
 import {
   createStyles,
   Navbar,
@@ -13,6 +9,7 @@ import {
   Code,
   TextInput,
   rem,
+  Button,
 } from "@mantine/core";
 
 import {
@@ -148,60 +145,68 @@ const useStyles = createStyles((theme) => ({
   },
 
   outerDiv: {
-    width: "450px",
-    // height: "100vh",
-    backgroundColor: "#4f5451",
+    width: "340px",
+    height: "60px",
+    backgroundColor: "#1f2120",
+    borderRadius: "20px",
+    boxShadow: "1px 1px 5px black",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-
-  panel: {
-    width: "450px",
-    height: "160vh",
-    backgroundColor: "#4f5451",
-    display: "flex",
-    flexDirection: "column",
-    color: "white",
-    // justifyContent: "center",
     alignItems: "center",
+    justifyContent: "space-evenly",
+    margin: "8px",
+    // flexDirection: "row",
   },
 
-  searchBarCont: {},
+  profile: {
+    borderRadius: "100%",
+    width: "55px",
+    height: "55px",
+    backgroundColor: "white",
+    marginLeft: "10px",
+  },
 }));
 
-const RightSidePanel = () => {
+const podcasters = () => {
   const { classes, cx } = useStyles();
-  const [searchkey, setSearchKey] = useState("");
+  const [follow, setFollow] = useState(false);
+
+  const toggleButton = () => {
+    setFollow(!follow);
+    console.log(follow);
+  };
+
   return (
     <>
-      <div className={classes.panel}>
-        <div className={classes.outerDiv}>
-          <div className={classes.searchBarCont}>
-            <h3>Quick Search</h3>
-            <TextInput
-              placeholder="Search"
-              size="sm"
-              radius="xl"
-              icon={<IconSearch size="1.2rem" stroke={2} />}
-              // rightSectionWidth={70}
-              onChange={(e) => setSearchKey(e.target.value)}
-              // rightSection={<Code className={classes.searchCode}>Ctrl + K</Code>}
-              styles={{ rightSection: { pointerEvents: "none" } }}
-              mb="sm"
-            />
-          </div>
-        </div>
-        <h3>Top Podcasts</h3>
-        {/* HERE MAP FUNCTION WILL ARRIVE */}
-        <Podcasters />
-        <Podcasters />
-        <Podcasters />
-
-        <Audioplayer />
+      <div className={classes.outerDiv}>
+        <div className={classes.profile}></div>
+        <div style={{ fontSize: "1rem" }}>Hem Mahimkar</div>
+        {follow ? (
+          <Button
+            variant="gradient"
+            gradient={{ from: "orange", to: "red" }}
+            radius="xl"
+            size="sm"
+            onClick={() => toggleButton()}
+          >
+            {/* {follow ? <>Following</> : <>Follow</>} */}
+            Following
+          </Button>
+        ) : (
+          <Button
+            variant="light"
+            color="orange"
+            // gradient={{ from: "orange", to: "red" }}
+            radius="xl"
+            size="sm"
+            onClick={() => toggleButton()}
+          >
+            {/* {follow ? <>Following</> : <>Follow</>} */}
+            Follow
+          </Button>
+        )}
       </div>
     </>
   );
 };
 
-export default RightSidePanel;
+export default podcasters;

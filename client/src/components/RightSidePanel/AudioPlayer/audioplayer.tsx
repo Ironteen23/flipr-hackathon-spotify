@@ -1,8 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import Podcasters from "./Podcasters/podcasters";
-import Audioplayer from "./AudioPlayer/audioplayer";
-// import styles from "../../../public/styles/rightSidePanel.css";
+import { Slider, RangeSlider } from "@mantine/core";
+import {
+  BsFillPauseFill,
+  BsFillPlayFill,
+  BsFillRewindFill,
+  BsFillFastForwardFill,
+} from "react-icons/bs";
 
 import {
   createStyles,
@@ -13,6 +17,8 @@ import {
   Code,
   TextInput,
   rem,
+  Box,
+  Button,
 } from "@mantine/core";
 
 import {
@@ -148,60 +154,96 @@ const useStyles = createStyles((theme) => ({
   },
 
   outerDiv: {
-    width: "450px",
-    // height: "100vh",
-    backgroundColor: "#4f5451",
+    width: "340px",
+    height: "300px",
+    backgroundColor: "#1f2120",
+    borderRadius: "40px",
+    boxShadow: "1px 1px 5px black",
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-  },
+    // alignItems: "center",
+    // justifyContent: "space-evenly",
+    margin: "10px",
 
-  panel: {
-    width: "450px",
-    height: "160vh",
-    backgroundColor: "#4f5451",
-    display: "flex",
     flexDirection: "column",
-    color: "white",
-    // justifyContent: "center",
-    alignItems: "center",
   },
 
-  searchBarCont: {},
+  profile: {
+    borderRadius: "100%",
+    width: "120px",
+    height: "180px",
+    backgroundColor: "white",
+    marginTop: "14px",
+  },
+
+  controlsDiv: {
+    // backgroundColor: "orange",
+    height: "25%",
+    width: "340px",
+    borderBottomLeftRadius: "40px",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    borderBottomRightRadius: "40px",
+  },
+
+  infoDiv: {
+    // backgroundColor: "red",
+    height: "75%",
+    width: "340px",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    borderTopLeftRadius: "40px",
+    borderTopRightRadius: "40px",
+  },
 }));
 
-const RightSidePanel = () => {
+const audioplayer = () => {
   const { classes, cx } = useStyles();
-  const [searchkey, setSearchKey] = useState("");
+
+  const [end, setEnd] = useState(20);
+  const [start, setStart] = useState(0);
+  const [pause, setPause] = useState(false);
+
+  const togglePause = () => {
+    setPause(!pause);
+  };
+
   return (
     <>
-      <div className={classes.panel}>
-        <div className={classes.outerDiv}>
-          <div className={classes.searchBarCont}>
-            <h3>Quick Search</h3>
-            <TextInput
-              placeholder="Search"
-              size="sm"
-              radius="xl"
-              icon={<IconSearch size="1.2rem" stroke={2} />}
-              // rightSectionWidth={70}
-              onChange={(e) => setSearchKey(e.target.value)}
-              // rightSection={<Code className={classes.searchCode}>Ctrl + K</Code>}
-              styles={{ rightSection: { pointerEvents: "none" } }}
-              mb="sm"
-            />
-          </div>
-        </div>
-        <h3>Top Podcasts</h3>
-        {/* HERE MAP FUNCTION WILL ARRIVE */}
-        <Podcasters />
-        <Podcasters />
-        <Podcasters />
+      <div className={classes.outerDiv}>
+        <div className={classes.infoDiv}>
+          <div className={classes.profile}></div>
+          <p>The Beer Biceps Podcast</p>
+          <p>WireFrame</p>
 
-        <Audioplayer />
+          {/* <Slider
+            defaultValue={0}
+            min={-10}
+            max={10}
+            label={(value) => value.toFixed(1)}
+            step={0.1}
+            styles={{ markLabel: { display: "none" } }}
+          /> */}
+        </div>
+        <div className={classes.controlsDiv}>
+          <BsFillRewindFill fontSize="2rem" />
+          {pause ? (
+            <BsFillPauseFill
+              fontSize="2rem"
+              // color="blue"
+              onClick={() => togglePause()}
+            />
+          ) : (
+            <BsFillPlayFill fontSize="2rem" onClick={() => togglePause()} />
+          )}
+
+          <BsFillFastForwardFill fontSize="2rem" />
+        </div>
       </div>
     </>
   );
 };
 
-export default RightSidePanel;
+export default audioplayer;
