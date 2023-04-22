@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import Podcasters from "./Podcasters/podcasters";
 import Audioplayer from "./AudioPlayer/audioplayer";
-// import styles from "../../../public/styles/rightSidePanel.css";
 
 import {
   createStyles,
