@@ -169,10 +169,11 @@ const useStyles = createStyles((theme) => ({
 
   profile: {
     borderRadius: "100%",
-    width: "120px",
-    height: "180px",
+    width: "150px",
+    height: "150px",
     backgroundColor: "white",
     marginTop: "14px",
+    alignSelf: "center",
   },
 
   controlsDiv: {
@@ -214,9 +215,12 @@ const audioplayer = () => {
     <>
       <div className={classes.outerDiv}>
         <div className={classes.infoDiv}>
-          <div className={classes.profile}></div>
-          <p>The Beer Biceps Podcast</p>
-          <p>WireFrame</p>
+          <div className={classes.profile}>{/* image here */}</div>
+          <p style={{ textAlign: "center" }}>
+            The Beer Biceps Podcast
+            <br></br>
+            WireFrame
+          </p>
 
           {/* <Slider
             defaultValue={0}
