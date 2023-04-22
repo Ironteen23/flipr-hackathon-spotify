@@ -102,9 +102,9 @@ export default function CardsCarousel() {
       maw={580}
       withIndicators
       height={rem(360)}
-      // plugins={[autoplay.current]}
-      // onMouseEnter={autoplay.current.stop}
-      // onMouseLeave={autoplay.current.reset}
+      plugins={[autoplay.current]}
+      onMouseEnter={autoplay.current.stop}
+      onMouseLeave={autoplay.current.reset}
     >
       {slides}
     </Carousel>

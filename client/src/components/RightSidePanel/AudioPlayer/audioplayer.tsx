@@ -1,6 +1,4 @@
-import React from "react";
 import { useState } from "react";
-import { Slider, RangeSlider } from "@mantine/core";
 import {
   BsFillPauseFill,
   BsFillPlayFill,
@@ -10,25 +8,8 @@ import {
 
 import {
   createStyles,
-  Navbar,
-  UnstyledButton,
-  Tooltip,
-  Title,
-  Code,
-  TextInput,
   rem,
-  Box,
-  Button,
 } from "@mantine/core";
-
-import {
-  IconBulb,
-  IconUser,
-  IconCheckbox,
-  IconSearch,
-  IconPlus,
-  IconSelector,
-} from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -203,8 +184,8 @@ const useStyles = createStyles((theme) => ({
 const audioplayer = () => {
   const { classes, cx } = useStyles();
 
-  const [end, setEnd] = useState(20);
-  const [start, setStart] = useState(0);
+  // const [end, setEnd] = useState(20);
+  // const [start, setStart] = useState(0);
   const [pause, setPause] = useState(false);
 
   const togglePause = () => {
@@ -218,7 +199,7 @@ const audioplayer = () => {
           <div className={classes.profile}>{/* image here */}</div>
           <p style={{ textAlign: "center" }}>
             The Beer Biceps Podcast
-            <br></br>
+            <br/>
             WireFrame
           </p>
 

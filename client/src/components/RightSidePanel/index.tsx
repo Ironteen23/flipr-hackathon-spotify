@@ -1,26 +1,15 @@
-import React from "react";
 import { useState } from "react";
 import Podcasters from "./Podcasters/podcasters";
 import Audioplayer from "./AudioPlayer/audioplayer";
 
 import {
   createStyles,
-  Navbar,
-  UnstyledButton,
-  Tooltip,
-  Title,
-  Code,
   TextInput,
   rem,
 } from "@mantine/core";
 
 import {
-  IconBulb,
-  IconUser,
-  IconCheckbox,
   IconSearch,
-  IconPlus,
-  IconSelector,
 } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({

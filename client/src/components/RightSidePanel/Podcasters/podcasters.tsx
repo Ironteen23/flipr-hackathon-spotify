@@ -1,25 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import {
   createStyles,
-  Navbar,
-  UnstyledButton,
-  Tooltip,
-  Title,
-  Code,
-  TextInput,
   rem,
   Button,
 } from "@mantine/core";
-
-import {
-  IconBulb,
-  IconUser,
-  IconCheckbox,
-  IconSearch,
-  IconPlus,
-  IconSelector,
-} from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -178,7 +162,7 @@ const podcasters = () => {
   return (
     <>
       <div className={classes.outerDiv}>
-        <div className={classes.profile}></div>
+        <div className={classes.profile}/>
         <div style={{ fontSize: "1rem" }}>Hem Mahimkar</div>
         {follow ? (
           <Button
