@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import {
   Card,
   Text,
@@ -5,9 +7,9 @@ import {
   createStyles,
   getStylesRef,
   rem,
-} from "@mantine/core"
+} from "@mantine/core";
 
-const useStyles = createStyles(theme => ({
+const useStyles = createStyles((theme) => ({
   card: {
     position: "relative",
     height: rem(200),
@@ -61,17 +63,29 @@ const useStyles = createStyles(theme => ({
   author: {
     color: theme.colors.dark[2],
   },
-}))
+}));
 
 interface ImageCardProps {
-  link: string
-  image: string
-  title: string
-  author: string
+  imageLink: string;
+  audioLink: string;
+  Name: string;
+  description: string;
+  _id: string;
 }
 
-function ImageCard({ image, title, author, link }: ImageCardProps) {
-  const { classes } = useStyles()
+function ImageCard({
+  imageLink,
+  audioLink,
+  Name,
+  description,
+  _id,
+}: ImageCardProps) {
+  const { classes } = useStyles();
+  const [curentlyplaying, setCurentlyPlaying] = useState("");
+  const handleClick = (_id) => {
+    setCurentlyPlaying(_id);
+  };
+  console.log(curentlyplaying);
 
   return (
     <Card
@@ -81,13 +95,15 @@ function ImageCard({ image, title, author, link }: ImageCardProps) {
       className={classes.card}
       radius="md"
       component="a"
-      href={link}
+      // href={imageLink}
       target="_blank"
+      key={_id}
+      onClick={() => handleClick({ _id })}
     >
       <div
         className={classes.image}
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${imageLink})`,
           //   image should be in the center of the card and the excess should be cropped
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -98,52 +114,71 @@ function ImageCard({ image, title, author, link }: ImageCardProps) {
       <div className={classes.content}>
         <div>
           <Text size="lg" className={classes.title} weight={500}>
-            {title}
+            {Name}
           </Text>
 
           <Group position="apart" spacing="xs">
             <Text size="sm" className={classes.author}>
-              {author}
+              {/* {author} */}
+              Hem Mahimkar
             </Text>
           </Group>
         </div>
       </div>
     </Card>
-  )
+  );
 }
 
-const data = [
-  {
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQLIqDKGZ-8e7LyQoO6p1PbK6b3Amx7mhfyAIU9ts3Jrpr277o",
-    link: "/",
-    title: "The Internet Said So",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
-  },
-  {
-    image:
-      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAkyKGDMTPr7wGZ4HT7In2mXVZ05wZMnQxhn3x5YB9mWIobMyo",
-    link: "/",
-    title: "Serial",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
-  },
-  {
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWeo79NEWXN2DacZlL-56D4zYVJaKdBMQypDcJdDCFme3ezdE",
-    link: "https://mantine.dev/",
-    title: "A Show About Crypto",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
-  },
-]
+// const data = [
+//   {
+//     image:
+//       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQLIqDKGZ-8e7LyQoO6p1PbK6b3Amx7mhfyAIU9ts3Jrpr277o",
+//     link: "/",
+//     title: "The Internet Said So",
+//     author: "Robert Gluesticker",
+//     views: 7847,
+//     comments: 5,
+//   },
+//   {
+//     image:
+//       "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAkyKGDMTPr7wGZ4HT7In2mXVZ05wZMnQxhn3x5YB9mWIobMyo",
+//     link: "/",
+//     title: "Serial",
+//     author: "Robert Gluesticker",
+//     views: 7847,
+//     comments: 5,
+//   },
+//   {
+//     image:
+//       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWeo79NEWXN2DacZlL-56D4zYVJaKdBMQypDcJdDCFme3ezdE",
+//     link: "https://mantine.dev/",
+//     title: "A Show About Crypto",
+//     author: "Robert Gluesticker",
+//     views: 7847,
+//     comments: 5,
+//   },
+// ];
 
 export default function RecentlyPlayed() {
-  const slides = data.map(item => <ImageCard {...item} />)
+  const [data, setData] = useState<any>([]);
+  const [sucess, setSucess] = useState(false);
+
+  const getData = () => {
+    fetch("http://localhost:5000/data")
+      .then((res) => res.json())
+      .then((res) => setData(res))
+      .catch(() => console.log("error ocuurred"));
+  };
+
+  useEffect(() => {
+    getData();
+    console.log("tp");
+    console.log(data);
+  }, []);
+
+  // if (data) {
+  const slides = data?.map((item) => <ImageCard {...item} />);
+  // }
 
   return (
     <div
@@ -152,9 +187,10 @@ export default function RecentlyPlayed() {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
+        // textColor: "white",
       }}
     >
       {slides}
     </div>
-  )
+  );
 }
