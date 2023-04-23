@@ -6,7 +6,6 @@ import {
   ColorScheme,
 } from "@mantine/core"
 import App from "./App.tsx"
-import "./index.css"
 
 const Main = () => {
   const [colorScheme, setColorScheme] = React.useState<ColorScheme>("dark")
