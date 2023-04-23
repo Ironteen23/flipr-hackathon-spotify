@@ -162,7 +162,7 @@ const useStyles = createStyles((theme) => ({
   searchBarCont: {},
 }));
 
-const RightSidePanel = () => {
+const RightSidePanel = (props) => {
   const { classes, cx } = useStyles();
   const [searchkey, setSearchKey] = useState("");
   return (
@@ -190,7 +190,7 @@ const RightSidePanel = () => {
         <Podcasters />
         <Podcasters />
 
-        <Audioplayer />
+        <Audioplayer podcast={props.podcast} setPodcast={props.setPodcast} />
       </div>
     </>
   );

@@ -66,12 +66,19 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface ImageCardProps {
-  imageLink: string;
-  audioLink: string;
-  Name: string;
+  imageLink: any;
+  audioLink: any;
+  Name: any;
   description: string;
   _id: string;
+  setPodcast: any;
+  podcast: any;
 }
+
+// interface ImageCardProps2 {
+//   songid: any;
+//   setSongId: any;
+// }
 
 function ImageCard({
   imageLink,
@@ -79,14 +86,28 @@ function ImageCard({
   Name,
   description,
   _id,
+  setPodcast,
+  podcast,
 }: ImageCardProps) {
+  // { songid  }
+  // { props }
+  // { props }: any
   const { classes } = useStyles();
-  const [curentlyplaying, setCurentlyPlaying] = useState("");
-  const handleClick = (_id) => {
-    setCurentlyPlaying(_id);
-  };
-  console.log(curentlyplaying);
 
+  console.log("OP");
+  // console.log(props);
+  // const [curentlyplaying, setCurentlyPlaying] = useState("");
+  const handleClick = ({ Name, imageLink, audioLink }) => {
+    // setCurentlyPlaying(_id);
+    setPodcast({
+      imgLink: imageLink,
+      audioLink: audioLink,
+      name: Name,
+    });
+
+    // console.log("CURRENT", _id);
+    console.log("Props", podcast);
+  };
   return (
     <Card
       p="lg"
@@ -97,8 +118,8 @@ function ImageCard({
       component="a"
       // href={imageLink}
       target="_blank"
-      key={_id}
-      onClick={() => handleClick({ _id })}
+      // key={_id}
+      onClick={() => handleClick({ Name, imageLink, audioLink })}
     >
       <div
         className={classes.image}
@@ -159,7 +180,7 @@ function ImageCard({
 //   },
 // ];
 
-export default function RecentlyPlayed() {
+export default function RecentlyPlayed(props) {
   const [specificdata, setSpecififcData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
   const [sucess, setSucess] = useState(false);
@@ -185,11 +206,16 @@ export default function RecentlyPlayed() {
     console.log(data);
   }, []);
 
-  // if (data
+  // if (datas
 
-  const slides = data?.map((item) => <ImageCard {...item} />);
+  const slides = data?.map((item) => <ImageCard {...item} {...props} />);
+  console.log("PROP DRILLING ID", props.podcast);
   // }
 
+  // const testingChange = () => {
+  //   props.setSongId("HEM is working");
+  //   console.log("changed");
+  // };
   return (
     <div
       style={{
@@ -197,10 +223,16 @@ export default function RecentlyPlayed() {
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
+
         // textColor: "white",
+        //testing purposes
+        // backgroundColor: "red",
       }}
+      // onClick={() => {
+      //   testingChange();
+      // }}
     >
-      {slides}
+      {slides ? slides : <>LOADING</>}
     </div>
   );
 }

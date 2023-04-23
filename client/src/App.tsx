@@ -1,4 +1,5 @@
 import Sidepanel from "./components/Sidepanel";
+import { useState } from "react";
 import RightSidepanel from "./components/RightSidePanel/index";
 import Navbar from "./components/Navbar";
 import HeroCarousel from "./components/HeroCarousel";
@@ -12,6 +13,16 @@ export default function App() {
     display: "grid",
     gridTemplateColumns: "fit-content(300px) 1fr",
   };
+
+  // const [songid, setSongId] = useState("123");
+  // const [imgL , setimageL] = useState("");
+  // const [audio, setaudioL] = useState("");
+
+  const [podcast, setPodcast] = useState({
+    imgLink: "1",
+    audioLink: "2",
+    name: "3",
+  });
 
   return (
     // <AdminDashboard/>
@@ -36,11 +47,11 @@ export default function App() {
               Trending <span style={{ color: "gray" }}>podcasts</span>
             </Title>
             <HeroCarousel />
-            <RecentlyPlayed />
+            <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
           </section>
 
           <div>
-            <RightSidepanel />
+            <RightSidepanel podcast={podcast} setPodcast={setPodcast} />
           </div>
         </section>
       </section>
