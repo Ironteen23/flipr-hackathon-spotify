@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  createStyles,
-  rem,
-  Button,
-} from "@mantine/core";
+import { createStyles, rem, Button } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -129,11 +125,18 @@ const useStyles = createStyles((theme) => ({
   },
 
   outerDiv: {
-    width: "340px",
+    width: "300px",
     height: "60px",
-    backgroundColor: "#1f2120",
+    // backgroundColor: "#1f2120",
+
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
+
     borderRadius: "20px",
-    boxShadow: "1px 1px 5px black",
+    // boxShadow: "1px 1px 5px black",
+    // border: "2px black",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -145,8 +148,19 @@ const useStyles = createStyles((theme) => ({
     borderRadius: "100%",
     width: "55px",
     height: "55px",
-    backgroundColor: "white",
+    // backgroundColor: "white",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[1]
+        : theme.colors.dark[5],
     marginLeft: "10px",
+  },
+
+  name: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[1]
+        : theme.colors.dark[5],
   },
 }));
 
@@ -162,8 +176,8 @@ const podcasters = () => {
   return (
     <>
       <div className={classes.outerDiv}>
-        <div className={classes.profile}/>
-        <div style={{ fontSize: "1rem" }}>Hem Mahimkar</div>
+        <div className={classes.profile} />
+        <div className={classes.name}>Hem Mahimkar</div>
         {follow ? (
           <Button
             variant="gradient"

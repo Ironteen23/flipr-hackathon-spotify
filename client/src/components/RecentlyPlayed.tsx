@@ -160,23 +160,33 @@ function ImageCard({
 // ];
 
 export default function RecentlyPlayed() {
+  const [specificdata, setSpecififcData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
   const [sucess, setSucess] = useState(false);
 
   const getData = () => {
     fetch("http://localhost:5000/data")
       .then((res) => res.json())
-      .then((res) => setData(res))
+      .then((res) => setData(res.slice(0, 6)))
       .catch(() => console.log("error ocuurred"));
   };
 
   useEffect(() => {
     getData();
+    // const arr = [{}];
+    // data.map((item, i) => {
+    //   arr.push(item);
+    //   if (i > 6) {
+    //     return;
+    //   }
+    // });
+    // setSpecififcData(arr);
     console.log("tp");
     console.log(data);
   }, []);
 
-  // if (data) {
+  // if (data
+
   const slides = data?.map((item) => <ImageCard {...item} />);
   // }
 
