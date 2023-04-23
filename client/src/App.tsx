@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HeroCarousel from "./components/HeroCarousel";
 import { Title } from "@mantine/core";
 import RecentlyPlayed from "./components/RecentlyPlayed";
+import AdminDashboard from "./AdminDashboard/index";
 
 export default function App() {
   const style = {
@@ -13,6 +14,8 @@ export default function App() {
   };
 
   return (
+    // <AdminDashboard/>
+
     <div style={style}>
       {/* left sidepanel */}
       <aside>
