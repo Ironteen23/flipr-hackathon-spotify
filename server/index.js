@@ -9,6 +9,10 @@ import Podcast from './models/Podcast.js'
 const app = express()
 dotenv.config()
 
+const fs = require('fs')
+const readline = require('readline')
+import { google } from 'googleapis'
+
 const PORT = process.env.PORT || 6001
 const Mongo = process.env.MONGO_URL
 
@@ -18,6 +22,7 @@ app.use(express.json())
 /* ROUTES */
 
 app.use('/auth', authRoutes)
+app.use('/admin', adminRoutes)
 
 mongoose
   .connect(Mongo, {
