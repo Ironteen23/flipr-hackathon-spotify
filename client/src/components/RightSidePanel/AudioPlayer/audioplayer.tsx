@@ -6,10 +6,7 @@ import {
   BsFillFastForwardFill,
 } from "react-icons/bs";
 
-import {
-  createStyles,
-  rem,
-} from "@mantine/core";
+import { createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -135,9 +132,14 @@ const useStyles = createStyles((theme) => ({
   },
 
   outerDiv: {
-    width: "340px",
+    width: "300px",
     height: "300px",
-    backgroundColor: "#1f2120",
+    // backgroundColor: "#1f2120",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
+
     borderRadius: "40px",
     boxShadow: "1px 1px 5px black",
     display: "flex",
@@ -152,7 +154,11 @@ const useStyles = createStyles((theme) => ({
     borderRadius: "100%",
     width: "150px",
     height: "150px",
-    backgroundColor: "white",
+    // backgroundColor: "white",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[1]
+        : theme.colors.dark[5],
     marginTop: "14px",
     alignSelf: "center",
   },
@@ -160,7 +166,7 @@ const useStyles = createStyles((theme) => ({
   controlsDiv: {
     // backgroundColor: "orange",
     height: "25%",
-    width: "340px",
+    width: "300px",
     borderBottomLeftRadius: "40px",
 
     display: "flex",
@@ -172,7 +178,7 @@ const useStyles = createStyles((theme) => ({
   infoDiv: {
     // backgroundColor: "red",
     height: "75%",
-    width: "340px",
+    width: "300px",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -199,7 +205,7 @@ const audioplayer = () => {
           <div className={classes.profile}>{/* image here */}</div>
           <p style={{ textAlign: "center" }}>
             The Beer Biceps Podcast
-            <br/>
+            <br />
             WireFrame
           </p>
 

@@ -1,17 +1,21 @@
-import Sidepanel from './components/Sidepanel'
-import RightSidepanel from './components/RightSidePanel/index'
-import Navbar from './components/Navbar'
-import CardsCarousel from './components/CardsCarousel'
-import { Title } from '@mantine/core'
+import Sidepanel from "./components/Sidepanel";
+import RightSidepanel from "./components/RightSidePanel/index";
+import Navbar from "./components/Navbar";
+import HeroCarousel from "./components/HeroCarousel";
+import { Title } from "@mantine/core";
+import RecentlyPlayed from "./components/RecentlyPlayed";
+import AdminDashboard from "./AdminDashboard/index";
 
 export default function App() {
   const style = {
     // first column fit content second column reamin space
-    display: 'grid',
-    gridTemplateColumns: 'fit-content(300px) 1fr',
-  }
+    display: "grid",
+    gridTemplateColumns: "fit-content(300px) 1fr",
+  };
 
   return (
+    // <AdminDashboard/>
+
     <div style={style}>
       {/* left sidepanel */}
       <aside>
@@ -23,15 +27,16 @@ export default function App() {
 
         <section
           style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
           }}
         >
           <section>
             <Title>
-              Trending <span style={{ color: 'gray' }}>podcasts</span>
+              Trending <span style={{ color: "gray" }}>podcasts</span>
             </Title>
-            <CardsCarousel />
+            <HeroCarousel />
+            <RecentlyPlayed />
           </section>
 
           <div>
@@ -40,5 +45,5 @@ export default function App() {
         </section>
       </section>
     </div>
-  )
+  );
 }

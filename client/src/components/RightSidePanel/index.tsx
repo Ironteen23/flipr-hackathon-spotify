@@ -2,15 +2,9 @@ import { useState } from "react";
 import Podcasters from "./Podcasters/podcasters";
 import Audioplayer from "./AudioPlayer/audioplayer";
 
-import {
-  createStyles,
-  TextInput,
-  rem,
-} from "@mantine/core";
+import { createStyles, TextInput, rem } from "@mantine/core";
 
-import {
-  IconSearch,
-} from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -136,21 +130,31 @@ const useStyles = createStyles((theme) => ({
   },
 
   outerDiv: {
-    width: "450px",
+    width: "320px",
     // height: "100vh",
-    backgroundColor: "#4f5451",
+    // backgroundColor: "#4f5451",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
   },
 
   panel: {
-    width: "450px",
+    width: "320px",
     height: "160vh",
-    backgroundColor: "#4f5451",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[1],
     display: "flex",
     flexDirection: "column",
-    color: "white",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[1]
+        : theme.colors.dark[5],
     // justifyContent: "center",
     alignItems: "center",
   },
