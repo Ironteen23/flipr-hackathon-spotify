@@ -1,8 +1,9 @@
 import Sidepanel from './components/Sidepanel'
 import RightSidepanel from './components/RightSidePanel/index'
 import Navbar from './components/Navbar'
-import CardsCarousel from './components/CardsCarousel'
+import HeroCarousel from "./components/HeroCarousel"
 import { Title } from '@mantine/core'
+import RecentlyPlayed from './components/RecentlyPlayed'
 
 export default function App() {
   const style = {
@@ -23,15 +24,16 @@ export default function App() {
 
         <section
           style={{
-            display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
+            display: "grid",
+            gridTemplateColumns: "2fr 1fr",
           }}
         >
           <section>
             <Title>
-              Trending <span style={{ color: 'gray' }}>podcasts</span>
+              Trending <span style={{ color: "gray" }}>podcasts</span>
             </Title>
-            <CardsCarousel />
+            <HeroCarousel />
+            <RecentlyPlayed />
           </section>
 
           <div>
