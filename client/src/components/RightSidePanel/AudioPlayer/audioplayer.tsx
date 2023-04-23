@@ -1,12 +1,13 @@
-import React from "react";
-import styles from "../../../public/styles/rightSidePanel.css";
+import { useState } from "react";
+import {
+  BsFillPauseFill,
+  BsFillPlayFill,
+  BsFillRewindFill,
+  BsFillFastForwardFill,
+} from "react-icons/bs";
 
 import {
   createStyles,
-  Navbar,
-  UnstyledButton,
-  Tooltip,
-  Title,
   rem,
 } from "@mantine/core";
 
@@ -133,23 +134,101 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-  searchBar: {
+  outerDiv: {
+    width: "340px",
+    height: "300px",
+    backgroundColor: "#1f2120",
+    borderRadius: "40px",
+    boxShadow: "1px 1px 5px black",
+    display: "flex",
+    // alignItems: "center",
+    // justifyContent: "space-evenly",
+    margin: "10px",
+
+    flexDirection: "column",
+  },
+
+  profile: {
+    borderRadius: "100%",
+    width: "150px",
+    height: "150px",
     backgroundColor: "white",
-    width: "80px",
-    borderRadius: "20px",
+    marginTop: "14px",
+    alignSelf: "center",
+  },
+
+  controlsDiv: {
+    // backgroundColor: "orange",
+    height: "25%",
+    width: "340px",
+    borderBottomLeftRadius: "40px",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    borderBottomRightRadius: "40px",
+  },
+
+  infoDiv: {
+    // backgroundColor: "red",
+    height: "75%",
+    width: "340px",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    borderTopLeftRadius: "40px",
+    borderTopRightRadius: "40px",
   },
 }));
 
-const RightSidePanel = () => {
+const audioplayer = () => {
   const { classes, cx } = useStyles();
+
+  // const [end, setEnd] = useState(20);
+  // const [start, setStart] = useState(0);
+  const [pause, setPause] = useState(false);
+
+  const togglePause = () => {
+    setPause(!pause);
+  };
 
   return (
     <>
-      <div>
-        <div className={classes.searchBar}>Hello</div>
+      <div className={classes.outerDiv}>
+        <div className={classes.infoDiv}>
+          <div className={classes.profile}>{/* image here */}</div>
+          <p style={{ textAlign: "center" }}>
+            The Beer Biceps Podcast
+            <br/>
+            WireFrame
+          </p>
+
+          {/* <Slider
+            defaultValue={0}
+            min={-10}
+            max={10}
+            label={(value) => value.toFixed(1)}
+            step={0.1}
+            styles={{ markLabel: { display: "none" } }}
+          /> */}
+        </div>
+        <div className={classes.controlsDiv}>
+          <BsFillRewindFill fontSize="2rem" />
+          {pause ? (
+            <BsFillPauseFill
+              fontSize="2rem"
+              // color="blue"
+              onClick={() => togglePause()}
+            />
+          ) : (
+            <BsFillPlayFill fontSize="2rem" onClick={() => togglePause()} />
+          )}
+
+          <BsFillFastForwardFill fontSize="2rem" />
+        </div>
       </div>
     </>
   );
 };
 
-export default RightSidePanel;
+export default audioplayer;
