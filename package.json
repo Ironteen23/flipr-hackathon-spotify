@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "googleapis": "^118.0.0",
-    "nodemon": "^2.0.22"
-  }
-}
