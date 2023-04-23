@@ -10,16 +10,30 @@ import Podcast from "./models/Podcast.js";
 const app = express();
 dotenv.config();
 
+<<<<<<< HEAD
+const fs = require('fs')
+const readline = require('readline')
+import { google } from 'googleapis'
+
+const PORT = process.env.PORT || 6001
+const Mongo = process.env.MONGO_URL
+=======
 const PORT = process.env.PORT || 6001;
 const Mongo = process.env.MONGO_URL;
+>>>>>>> 53c708f89f19b896fc17caee1f18b14b005a8416
 
 app.use(cors());
 app.use(express.json());
 
 /* ROUTES */
 
+<<<<<<< HEAD
+app.use('/auth', authRoutes)
+app.use('/admin', adminRoutes)
+=======
 app.use("/auth", authRoutes);
 app.use("/data", PodcastRoutes);
+>>>>>>> 53c708f89f19b896fc17caee1f18b14b005a8416
 
 mongoose
   .connect(Mongo, {
