@@ -88,7 +88,7 @@ const data = [
   // },
 ]
 
-export default function CardsCarousel() {
+export default function HeroCarousel() {
   const autoplay = useRef(Autoplay({ delay: 2000 }))
 
   const slides = data.map(item => (
