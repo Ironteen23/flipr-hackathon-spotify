@@ -1,48 +1,35 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import { register } from "./controllers/auth.js";
-import authRoutes from "./routes/auth.js";
-import PodcastRoutes from "./routes/data.js";
-import dotenv from "dotenv";
-import { Client } from "podcast-api";
-import Podcast from "./models/Podcast.js";
-const app = express();
-dotenv.config();
-
-<<<<<<< HEAD
-const fs = require('fs')
-const readline = require('readline')
-import { google } from 'googleapis'
+import express from 'express'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import { register } from './controllers/auth.js'
+import authRoutes from './routes/auth.js'
+import adminRoutes from './routes/admin.js'
+import PodcastRoutes from './routes/data.js'
+import dotenv from 'dotenv'
+import { Client } from 'podcast-api'
+import Podcast from './models/Podcast.js'
+const app = express()
+dotenv.config()
 
 const PORT = process.env.PORT || 6001
 const Mongo = process.env.MONGO_URL
-=======
-const PORT = process.env.PORT || 6001;
-const Mongo = process.env.MONGO_URL;
->>>>>>> 53c708f89f19b896fc17caee1f18b14b005a8416
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 /* ROUTES */
 
-<<<<<<< HEAD
 app.use('/auth', authRoutes)
 app.use('/admin', adminRoutes)
-=======
-app.use("/auth", authRoutes);
-app.use("/data", PodcastRoutes);
->>>>>>> 53c708f89f19b896fc17caee1f18b14b005a8416
 
 mongoose
   .connect(Mongo, {
     useNewUrlParser: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`${error} did not connect`))
 
 // import Client from 'podcast-api'
 
