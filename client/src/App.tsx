@@ -1,20 +1,28 @@
-import Sidepanel from "./components/Sidepanel";
-import { useState } from "react";
-import RightSidepanel from "./components/RightSidePanel/index";
-import Navbar from "./components/Navbar";
-import HeroCarousel from "./components/HeroCarousel";
-import { Title } from "@mantine/core";
-import RecentlyPlayed from "./components/RecentlyPlayed";
+
 import VList from "./components/VideoPodcasts/videopodcasts"
 import AdminDashboard from "./AdminDashboard/index";
-import VPlayer from "./components/VideoPlayer/videoplayer";
+// import VPlayer from "./components/VideoPlayer/videoplayer";
+import Sidepanel from "./components/Sidepanel"
+import { useState } from "react"
+import RightSidepanel from "./components/RightSidePanel/index"
+import Navbar from "./components/Navbar"
+import HeroCarousel from "./components/HeroCarousel"
+import { Title } from "@mantine/core"
+import RecentlyPlayed from "./components/RecentlyPlayed"
+// import AdminDashboard from "./AdminDashboard/index"
+import VPlayer from "./components/VideoPlayer/videoplayer"
+import VideoPodcast from "./components/VideoPodcasts/videopodcasts"
+import LoginPage from "./Login"
+import RegisterPage from "./Register/index"
+
+
 
 export default function App() {
   const style = {
     // first column fit content second column reamin space
     display: "grid",
     gridTemplateColumns: "fit-content(300px) 1fr",
-  };
+  }
 
   // const [songid, setSongId] = useState("123");
   // const [imgL , setimageL] = useState("");
@@ -32,10 +40,15 @@ export default function App() {
     author: "4"
   });
 
-  const [video, setVideo] = useState(true);
+  // const [video, setVideo] = useState(true);
+  // })
+
+  const [video, setVideo] = useState(false)
 
   return (
     // <AdminDashboard/>
+    // <RegisterPage handleRegister = {()=> { }}/>
+    // <LoginPage handleLogin={()=> {}}/>
 
     <div style={style}>
       {/* left sidepanel */}
@@ -68,6 +81,7 @@ export default function App() {
                   Trending <span style={{ color: "gray" }}>Video Podcast</span>
                 </h3>
                 <VList podcastV={podcastV} setPodcastv={setPodcastV} />
+                {/* <VideoPodcast video={video} setVideo={setVideo} /> */}
               </section>
             </>
           ) : (
@@ -100,5 +114,6 @@ export default function App() {
         </section>
       </section>
     </div>
-  );
+
+  )
 }

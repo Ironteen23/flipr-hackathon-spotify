@@ -18,11 +18,13 @@ dotenv.config();
 const PORT = process.env.PORT || 6001;
 const Mongo = process.env.MONGO_URL;
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 /* ROUTES */
 
+// app.use('/auth', authRoutes)
+app.use('/admin', adminRoutes)
 app.use("/auth", authRoutes);
 // app.use("/admin", adminRoutes);
 app.use("/data", PodcastRoutes);
@@ -32,9 +34,9 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`${error} did not connect`))
 
 // import Client from 'podcast-api'
 
