@@ -7,6 +7,7 @@ import { Title } from "@mantine/core";
 import RecentlyPlayed from "./components/RecentlyPlayed";
 import AdminDashboard from "./AdminDashboard/index";
 import VPlayer from "./components/VideoPlayer/videplayer";
+import VideoPodcast from "./components/VideoPodcasts/videopodcasts";
 
 export default function App() {
   const style = {
@@ -60,6 +61,7 @@ export default function App() {
                 <h3>
                   Trending <span style={{ color: "gray" }}>Video Podcast</span>
                 </h3>
+                <VideoPodcast video={video} setVideo={setVideo} />
               </section>
             </>
           ) : (

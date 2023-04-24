@@ -23,13 +23,18 @@ export const getAllData = async (req, res) => {
   }
 };
 
-// export const addFav = async(req,res) =>{
-//   try {
-//     const { _id , songid } = req.body;
+export const addFav = async (req, res) => {
+  try {
+    const { user_id, song_id } = req.body;
 
-//     const user = await User.findOneAndUpdate({_id:_id} , {favorites.push(id)});
+    const user = await User.findOneAndUpdate(
+      { _id: user_id },
+      { $addToSet: { favourites: [{ song_id }] } }
+      // { favourites: favourites.push(song_id) }
+    );
 
-//   } catch (error) {
-
-//   }
-// }
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
