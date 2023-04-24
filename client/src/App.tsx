@@ -1,20 +1,24 @@
-import Sidepanel from "./components/Sidepanel";
-import { useState } from "react";
-import RightSidepanel from "./components/RightSidePanel/index";
-import Navbar from "./components/Navbar";
-import HeroCarousel from "./components/HeroCarousel";
-import { Title } from "@mantine/core";
-import RecentlyPlayed from "./components/RecentlyPlayed";
-import AdminDashboard from "./AdminDashboard/index";
-import VPlayer from "./components/VideoPlayer/videplayer";
-import VideoPodcast from "./components/VideoPodcasts/videopodcasts";
+import Sidepanel from "./components/Sidepanel"
+import { useState } from "react"
+import RightSidepanel from "./components/RightSidePanel/index"
+import Navbar from "./components/Navbar"
+import HeroCarousel from "./components/HeroCarousel"
+import { Title } from "@mantine/core"
+import RecentlyPlayed from "./components/RecentlyPlayed"
+import AdminDashboard from "./AdminDashboard/index"
+import VPlayer from "./components/VideoPlayer/videplayer"
+import VideoPodcast from "./components/VideoPodcasts/videopodcasts"
+import LoginPage from "./Login"
+import RegisterPage from "./Register/index"
+
+
 
 export default function App() {
   const style = {
     // first column fit content second column reamin space
     display: "grid",
     gridTemplateColumns: "fit-content(300px) 1fr",
-  };
+  }
 
   // const [songid, setSongId] = useState("123");
   // const [imgL , setimageL] = useState("");
@@ -24,12 +28,14 @@ export default function App() {
     imgLink: "1",
     audioLink: "2",
     name: "3",
-  });
+  })
 
-  const [video, setVideo] = useState(false);
+  const [video, setVideo] = useState(false)
 
   return (
     // <AdminDashboard/>
+    // <RegisterPage handleRegister = {()=> { }}/>
+    // <LoginPage handleLogin={()=> {}}/>
 
     <div style={style}>
       {/* left sidepanel */}
@@ -90,5 +96,6 @@ export default function App() {
         </section>
       </section>
     </div>
-  );
+
+  )
 }
