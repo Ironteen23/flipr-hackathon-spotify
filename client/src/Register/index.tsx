@@ -73,11 +73,15 @@ export default function RegisterPage({ handleRegister }) {
           Welcome to Earow
         </Title>
 
+        <TextInput label="Username" placeholder="Kevin De Bruyne" size="md" />
+
         <TextInput
           label="Email address"
-          placeholder="hello@gmail.com"
+          placeholder="kevin@gmail.com"
+          mt="md"
           size="md"
         />
+
         <PasswordInput
           label="Password"
           placeholder="Your password"
@@ -100,28 +104,17 @@ export default function RegisterPage({ handleRegister }) {
         </Dialog>
 
         <Button fullWidth mt="xl" size="md" onClick={handleCredentialsLogin}>
-          Login
-        </Button>
-
-        <Button
-          fullWidth
-          mt="xl"
-          size="md"
-          color="dark"
-          onClick={() => handleRegister("redirect")}
-          leftIcon={<IconBrandGoogle size={18} />}
-        >
-          Login with Google
+          Register
         </Button>
 
         <Text align="center" mt="md">
-          Don&apos;t have an account?{" "}
+          Already have an account?{" "}
           <Anchor<"a">
             href="#"
             weight={700}
             onClick={event => event.preventDefault()}
           >
-            Register
+            Login
           </Anchor>
         </Text>
       </Paper>

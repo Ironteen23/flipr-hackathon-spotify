@@ -8,6 +8,10 @@ import RecentlyPlayed from "./components/RecentlyPlayed"
 import AdminDashboard from "./AdminDashboard/index"
 import VPlayer from "./components/VideoPlayer/videplayer"
 import VideoPodcast from "./components/VideoPodcasts/videopodcasts"
+import LoginPage from "./Login"
+import RegisterPage from "./Register/index"
+
+
 
 export default function App() {
   const style = {
@@ -30,6 +34,8 @@ export default function App() {
 
   return (
     // <AdminDashboard/>
+    // <RegisterPage handleRegister = {()=> { }}/>
+    // <LoginPage handleLogin={()=> {}}/>
 
     <div style={style}>
       {/* left sidepanel */}
@@ -90,5 +96,6 @@ export default function App() {
         </section>
       </section>
     </div>
+
   )
 }

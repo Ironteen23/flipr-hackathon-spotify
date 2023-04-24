@@ -79,12 +79,6 @@ export default function LoginPage({ handleLogin }) {
           size="md"
         />
 
-        <TextInput
-          label="Username"
-          placeholder="Kevin De Bruyne"
-          mt="md"
-          size="md"
-        />
         <PasswordInput
           label="Password"
           placeholder="Your password"
