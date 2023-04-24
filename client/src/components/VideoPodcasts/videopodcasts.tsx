@@ -67,12 +67,11 @@ const useStyles = createStyles((theme) => ({
 
 interface ImageCardProps {
   imageLink: any;
-  audioLink: any;
-  Name: any;
-  description: string;
-  _id: string;
-  setPodcast: any;
-  podcast: any;
+  videoLink: any;
+  title: any;
+  author: any;
+  setPodcastV: any;
+  podcastV: any;
 }
 
 // interface ImageCardProps2 {
@@ -82,12 +81,12 @@ interface ImageCardProps {
 
 function ImageCard({
   imageLink,
-  audioLink,
-  Name,
-  description,
-  _id,
-  setPodcast,
-  podcast,
+  videoLink,
+  title,
+  author,
+  setPodcastV,
+  podcastV
+
 }: ImageCardProps) {
   // { songid  }
   // { props }
@@ -97,16 +96,18 @@ function ImageCard({
   console.log("OP");
   // console.log(props);
   // const [curentlyplaying, setCurentlyPlaying] = useState("");
-  const handleClick = ({ Name, imageLink, audioLink }) => {
+  const handleClick = ({imageLink, videoLink, title, author }) => {
     // setCurentlyPlaying(_id);
-    setPodcast({
-      imgLink: imageLink,
-      audioLink: audioLink,
-      name: Name,
+    setPodcastV({
+      imageLink: imageLink,
+      videoLink: videoLink,
+      title: title,
+      author: author
     });
 
     // console.log("CURRENT", _id);
-    console.log("Props", podcast);
+    console.log("Props", podcastV);
+
   };
   return (
     <Card
@@ -119,7 +120,7 @@ function ImageCard({
       // href={imageLink}
       target="_blank"
       // key={_id}
-      onClick={() => handleClick({ Name, imageLink, audioLink })}
+      onClick={() => handleClick({ imageLink, videoLink, title, author })}
     >
       <div
         className={classes.image}
@@ -135,13 +136,12 @@ function ImageCard({
       <div className={classes.content}>
         <div>
           <Text size="lg" className={classes.title} weight={500}>
-            {Name}
+            {title}
           </Text>
 
           <Group position="apart" spacing="xs">
             <Text size="sm" className={classes.author}>
-              {/* {author} */}
-              Hem Mahimkar
+              {author}
             </Text>
           </Group>
         </div>
@@ -152,37 +152,40 @@ function ImageCard({
 
 const data = [
   {
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQLIqDKGZ-8e7LyQoO6p1PbK6b3Amx7mhfyAIU9ts3Jrpr277o",
-    link: "/",
-    title: "The Internet Said So",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
+    imageLink:
+      "https://img.youtube.com/vi/OcISVEh1jyw/sddefault.jpg",
+    videoLink: "https://www.youtube.com/watch?v=OcISVEh1jyw",
+    title: "Priyanka Chopra Returns For Another Blockbuster Chat",
+    author: "BeerBiceps",
+    key: 1
+    // views: 7847,
+    // comments: 5,
   },
   {
-    image:
-      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAkyKGDMTPr7wGZ4HT7In2mXVZ05wZMnQxhn3x5YB9mWIobMyo",
-    link: "/",
-    title: "Serial",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
+    imageLink:
+      "https://img.youtube.com/vi/fBfJmAAYVBI/sddefault.jpg",
+    videoLink: "https://www.youtube.com/watch?v=fBfJmAAYVBI",
+    title: "Dil Ki Baatein Zakir Khan Bhai Ke Saath",
+    author: "Ranveer Allahbadia",
+    key: 2
+    // views: 7847,
+    // comments: 5,
   },
   {
-    image:
-      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWeo79NEWXN2DacZlL-56D4zYVJaKdBMQypDcJdDCFme3ezdE",
-    link: "https://mantine.dev/",
-    title: "A Show About Crypto",
-    author: "Robert Gluesticker",
-    views: 7847,
-    comments: 5,
+    imageLink:
+      "https://img.youtube.com/vi/SwQhKFMxmDY/sddefault.jpg",
+    videoLink: "https://www.youtube.com/watch?v=SwQhKFMxmDY",
+    title: "Change Your Brain: Neuroscientist Dr. Andrew Huberman",
+    author: "Rich Roll",
+    key: 3
+    // views: 7847,
+    // comments: 5,
   },
 ];
 
-export default function RecentlyPlayed(props) {
+export default function VList(props) {
   const [specificdata, setSpecififcData] = useState<any>([]);
-  const [data, setData] = useState<any>([]);
+  // const [data, setData] = useState<any>([]);
   const [sucess, setSucess] = useState(false);
 
   //   const getData = () => {
@@ -208,8 +211,8 @@ export default function RecentlyPlayed(props) {
 
   // if (datas
 
-  const slides = data?.map((item) => <ImageCard {...item} />);
-  //   console.log("PROP DRILLING ID", props.podcast);
+  const slides = data?.map((item) => <ImageCard {...item}{...props}/>);
+    console.log("PROP DRILLING ID vidoe", props.podcastV);
   // }
 
   // const testingChange = () => {

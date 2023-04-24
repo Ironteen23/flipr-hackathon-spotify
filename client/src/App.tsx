@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import HeroCarousel from "./components/HeroCarousel";
 import { Title } from "@mantine/core";
 import RecentlyPlayed from "./components/RecentlyPlayed";
+import VList from "./components/VideoPodcasts/videopodcasts"
 import AdminDashboard from "./AdminDashboard/index";
-import VPlayer from "./components/VideoPlayer/videplayer";
+import VPlayer from "./components/VideoPlayer/videoplayer";
 
 export default function App() {
   const style = {
@@ -24,8 +25,14 @@ export default function App() {
     audioLink: "2",
     name: "3",
   });
+  const [podcastV, setPodcastV] = useState({
+    imageLink: "1",
+    videoLink: "2",
+    title: "3",
+    author: "4"
+  });
 
-  const [video, setVideo] = useState(false);
+  const [video, setVideo] = useState(true);
 
   return (
     // <AdminDashboard/>
@@ -60,6 +67,7 @@ export default function App() {
                 <h3>
                   Trending <span style={{ color: "gray" }}>Video Podcast</span>
                 </h3>
+                <VList podcastV={podcastV} setPodcastv={setPodcastV} />
               </section>
             </>
           ) : (
@@ -78,6 +86,10 @@ export default function App() {
                   Trending <span style={{ color: "gray" }}>Audio Podcast</span>
                 </h3>
                 <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
+                <h3>
+                  Trending <span style={{ color: "gray" }}>Video Podcast</span>
+                </h3>
+                <VList podcastV={podcastV} setPodcastv={setPodcastV} />
               </section>
             </>
           )}
