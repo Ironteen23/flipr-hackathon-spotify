@@ -29,7 +29,7 @@ export const addFav = async (req, res) => {
 
     const user = await User.findOneAndUpdate(
       { _id: user_id },
-      { $addToSet: { favourites: [{ song_id }] } }
+      { $addToSet: { favourites: [song_id] } }
       // { favourites: favourites.push(song_id) }
     );
 
