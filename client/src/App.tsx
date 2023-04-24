@@ -7,6 +7,8 @@ import { Title } from "@mantine/core";
 import RecentlyPlayed from "./components/RecentlyPlayed";
 import AdminDashboard from "./AdminDashboard/index";
 import VPlayer from "./components/VideoPlayer/videplayer";
+import RegisterPage from "./Register/index";
+import LoginPage from "./Login";
 
 export default function App() {
   const style = {
@@ -28,65 +30,68 @@ export default function App() {
   const [video, setVideo] = useState(false);
 
   return (
-    // <AdminDashboard/>
+    // <RegisterPage handleRegister={() => {}} />
 
-    <div style={style}>
-      {/* left sidepanel */}
-      <aside>
-        <Sidepanel />
-      </aside>
 
-      <section>
-        <Navbar />
+    <LoginPage handleLogin={() => {}}/>
 
-        <section
-          style={{
-            display: "grid",
-            gridTemplateColumns: "2fr 1fr",
-          }}
-        >
-          {!video ? (
-            <>
-              <section>
-                <Title>
-                  Trending <span style={{ color: "gray" }}>podcasts</span>
-                </Title>
-                <HeroCarousel />
-                <h3>
-                  Trending <span style={{ color: "gray" }}>Audio Podcast</span>
-                </h3>
-                <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
+    // <div style={style}>
+    //   {/* left sidepanel */}
+    //   <aside>
+    //     <Sidepanel />
+    //   </aside>
 
-                <h3>
-                  Trending <span style={{ color: "gray" }}>Video Podcast</span>
-                </h3>
-              </section>
-            </>
-          ) : (
-            <>
-              {/* <div style={{ display: "flex" }}> */}
-              {/* <VPlayer url={"https://www.youtube.com/watch?v=OcISVEh1jyw"} />
-                <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} /> */}
-              {/* </div> */}
+    //   <section>
+    //     <Navbar />
 
-              <section>
-                <Title>
-                  Trending <span style={{ color: "gray" }}>podcasts</span>
-                </Title>
-                <VPlayer url={"https://www.youtube.com/watch?v=OcISVEh1jyw"} />
-                <h3>
-                  Trending <span style={{ color: "gray" }}>Audio Podcast</span>
-                </h3>
-                <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
-              </section>
-            </>
-          )}
+    //     <section
+    //       style={{
+    //         display: "grid",
+    //         gridTemplateColumns: "2fr 1fr",
+    //       }}
+    //     >
+    //       {!video ? (
+    //         <>
+    //           <section>
+    //             <Title>
+    //               Trending <span style={{ color: "gray" }}>podcasts</span>
+    //             </Title>
+    //             <HeroCarousel />
+    //             <h3>
+    //               Trending <span style={{ color: "gray" }}>Audio Podcast</span>
+    //             </h3>
+    //             <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
 
-          <div>
-            <RightSidepanel podcast={podcast} setPodcast={setPodcast} />
-          </div>
-        </section>
-      </section>
-    </div>
-  );
+    //             <h3>
+    //               Trending <span style={{ color: "gray" }}>Video Podcast</span>
+    //             </h3>
+    //           </section>
+    //         </>
+    //       ) : (
+    //         <>
+    //           {/* <div style={{ display: "flex" }}> */}
+    //           {/* <VPlayer url={"https://www.youtube.com/watch?v=OcISVEh1jyw"} />
+    //             <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} /> */}
+    //           {/* </div> */}
+
+    //           <section>
+    //             <Title>
+    //               Trending <span style={{ color: "gray" }}>podcasts</span>
+    //             </Title>
+    //             <VPlayer url={"https://www.youtube.com/watch?v=OcISVEh1jyw"} />
+    //             <h3>
+    //               Trending <span style={{ color: "gray" }}>Audio Podcast</span>
+    //             </h3>
+    //             <RecentlyPlayed podcast={podcast} setPodcast={setPodcast} />
+    //           </section>
+    //         </>
+    //       )}
+
+    //       <div>
+    //         <RightSidepanel podcast={podcast} setPodcast={setPodcast} />
+    //       </div>
+    //     </section>
+    //   </section>
+    // </div>
+  )
 }
