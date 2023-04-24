@@ -1,26 +1,32 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import { register } from './controllers/auth.js'
-import authRoutes from './routes/auth.js'
-import adminRoutes from './routes/admin.js'
-import PodcastRoutes from './routes/data.js'
-import dotenv from 'dotenv'
-import { Client } from 'podcast-api'
-import Podcast from './models/Podcast.js'
-const app = express()
-dotenv.config()
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import { register } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
+import PodcastRoutes from "./routes/data.js";
+import dotenv from "dotenv";
+import { Client } from "podcast-api";
+import Podcast from "./models/Podcast.js";
+const app = express();
+dotenv.config();
 
-const PORT = process.env.PORT || 6001
-const Mongo = process.env.MONGO_URL
+// const fs = require("fs");
+// const readline = require("readline");
+// import { google } from "googleapis";
+
+const PORT = process.env.PORT || 6001;
+const Mongo = process.env.MONGO_URL;
 
 app.use(cors())
 app.use(express.json())
 
 /* ROUTES */
 
-app.use('/auth', authRoutes)
+// app.use('/auth', authRoutes)
 app.use('/admin', adminRoutes)
+app.use("/auth", authRoutes);
+// app.use("/admin", adminRoutes);
+app.use("/data", PodcastRoutes);
 
 mongoose
   .connect(Mongo, {

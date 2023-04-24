@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BsFillPauseFill,
   BsFillPlayFill,
@@ -133,7 +133,7 @@ const useStyles = createStyles((theme) => ({
 
   outerDiv: {
     width: "300px",
-    height: "300px",
+    height: "400px",
     // backgroundColor: "#1f2120",
     backgroundColor:
       theme.colorScheme === "dark"
@@ -146,7 +146,7 @@ const useStyles = createStyles((theme) => ({
     // alignItems: "center",
     // justifyContent: "space-evenly",
     margin: "10px",
-
+    marginTop: "20px",
     flexDirection: "column",
   },
 
@@ -170,8 +170,8 @@ const useStyles = createStyles((theme) => ({
     borderBottomLeftRadius: "40px",
 
     display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    // alignItems: "center",
+    // justifyContent: "space-evenly",
     borderBottomRightRadius: "40px",
   },
 
@@ -187,7 +187,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const audioplayer = () => {
+const audioplayer = (props) => {
   const { classes, cx } = useStyles();
 
   // const [end, setEnd] = useState(20);
@@ -198,15 +198,38 @@ const audioplayer = () => {
     setPause(!pause);
   };
 
+  useEffect(() => {
+    console.log("changed");
+  }, [props.podcast]);
+
+  console.log("LOLER", props.podcast);
   return (
     <>
       <div className={classes.outerDiv}>
         <div className={classes.infoDiv}>
-          <div className={classes.profile}>{/* image here */}</div>
+          <div
+            className={classes.profile}
+            style={{
+              backgroundImage: `url(${props.podcast.imgLink})`,
+              //   image should be in the center of the card and the excess should be cropped
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
+            {/* <div
+              className={classes.image}
+              style={{
+                backgroundImage: `url(${imageLink})`,
+                //   image should be in the center of the card and the excess should be cropped
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}
+            /> */}
+          </div>
           <p style={{ textAlign: "center" }}>
             The Beer Biceps Podcast
             <br />
-            WireFrame
+            {props.podcast.name}
           </p>
 
           {/* <Slider
@@ -219,7 +242,7 @@ const audioplayer = () => {
           /> */}
         </div>
         <div className={classes.controlsDiv}>
-          <BsFillRewindFill fontSize="2rem" />
+          {/* <BsFillRewindFill fontSize="2rem" />
           {pause ? (
             <BsFillPauseFill
               fontSize="2rem"
@@ -230,7 +253,12 @@ const audioplayer = () => {
             <BsFillPlayFill fontSize="2rem" onClick={() => togglePause()} />
           )}
 
-          <BsFillFastForwardFill fontSize="2rem" />
+          <BsFillFastForwardFill fontSize="2rem" /> */}
+          <audio
+            controls
+            src={props.podcast.audioLink}
+            style={{ marginTop: "-20px" }}
+          ></audio>
         </div>
       </div>
     </>

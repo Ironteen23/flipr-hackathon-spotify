@@ -150,66 +150,66 @@ function ImageCard({
   );
 }
 
-// const data = [
-//   {
-//     image:
-//       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQLIqDKGZ-8e7LyQoO6p1PbK6b3Amx7mhfyAIU9ts3Jrpr277o",
-//     link: "/",
-//     title: "The Internet Said So",
-//     author: "Robert Gluesticker",
-//     views: 7847,
-//     comments: 5,
-//   },
-//   {
-//     image:
-//       "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAkyKGDMTPr7wGZ4HT7In2mXVZ05wZMnQxhn3x5YB9mWIobMyo",
-//     link: "/",
-//     title: "Serial",
-//     author: "Robert Gluesticker",
-//     views: 7847,
-//     comments: 5,
-//   },
-//   {
-//     image:
-//       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWeo79NEWXN2DacZlL-56D4zYVJaKdBMQypDcJdDCFme3ezdE",
-//     link: "https://mantine.dev/",
-//     title: "A Show About Crypto",
-//     author: "Robert Gluesticker",
-//     views: 7847,
-//     comments: 5,
-//   },
-// ];
+const data = [
+  {
+    image:
+      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQLIqDKGZ-8e7LyQoO6p1PbK6b3Amx7mhfyAIU9ts3Jrpr277o",
+    link: "/",
+    title: "The Internet Said So",
+    author: "Robert Gluesticker",
+    views: 7847,
+    comments: 5,
+  },
+  {
+    image:
+      "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAkyKGDMTPr7wGZ4HT7In2mXVZ05wZMnQxhn3x5YB9mWIobMyo",
+    link: "/",
+    title: "Serial",
+    author: "Robert Gluesticker",
+    views: 7847,
+    comments: 5,
+  },
+  {
+    image:
+      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWeo79NEWXN2DacZlL-56D4zYVJaKdBMQypDcJdDCFme3ezdE",
+    link: "https://mantine.dev/",
+    title: "A Show About Crypto",
+    author: "Robert Gluesticker",
+    views: 7847,
+    comments: 5,
+  },
+];
 
 export default function RecentlyPlayed(props) {
   const [specificdata, setSpecififcData] = useState<any>([]);
   const [data, setData] = useState<any>([]);
   const [sucess, setSucess] = useState(false);
 
-  const getData = () => {
-    fetch("http://localhost:5000/data")
-      .then((res) => res.json())
-      .then((res) => setData(res.slice(0, 6)))
-      .catch(() => console.log("error ocuurred"));
-  };
+  //   const getData = () => {
+  //     fetch("http://localhost:5000/data")
+  //       .then((res) => res.json())
+  //       .then((res) => setData(res.slice(0, 6)))
+  //       .catch(() => console.log("error ocuurred"));
+  //   };
 
-  useEffect(() => {
-    getData();
-    // const arr = [{}];
-    // data.map((item, i) => {
-    //   arr.push(item);
-    //   if (i > 6) {
-    //     return;
-    //   }
-    // });
-    // setSpecififcData(arr);
-    console.log("tp");
-    console.log(data);
-  }, []);
+  //   useEffect(() => {
+  //     getData();
+  //     // const arr = [{}];
+  //     // data.map((item, i) => {
+  //     //   arr.push(item);
+  //     //   if (i > 6) {
+  //     //     return;
+  //     //   }
+  //     // });
+  //     // setSpecififcData(arr);
+  //     console.log("tp");
+  //     console.log(data);
+  //   }, []);
 
   // if (datas
 
-  const slides = data?.map((item) => <ImageCard {...item} {...props} />);
-  console.log("PROP DRILLING ID", props.podcast);
+  const slides = data?.map((item) => <ImageCard {...item} />);
+  //   console.log("PROP DRILLING ID", props.podcast);
   // }
 
   // const testingChange = () => {
